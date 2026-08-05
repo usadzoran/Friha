@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>السلة</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Cairo,sans-serif;
+}
+
+body{
+background:#f5f5f5;
+padding:20px;
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+color:#d32f2f;
+}
+
+.item{
+background:#fff;
+padding:15px;
+margin-bottom:12px;
+border-radius:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+.total{
+font-size:24px;
+font-weight:bold;
+margin:20px 0;
+color:#4caf50;
+text-align:center;
+}
+
+input,textarea{
+
+width:100%;
+
+padding:15px;
+
+margin-top:15px;
+
+border-radius:10px;
+
+border:1px solid #ccc;
+
+font-size:18px;
+
+}
+
+button{
+
+width:100%;
+
+padding:16px;
+
+margin-top:20px;
+
+border:none;
+
+border-radius:12px;
+
+background:#ff9800;
+
+color:white;
+
+font-size:20px;
+
+cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>سلة المشتريات</h1>
+
+<div id="cart"></div>
+
+<div class="total" id="total"></div>
+
+<input id="name" placeholder="الاسم الكامل">
+
+<input id="phone" placeholder="رقم الهاتف">
+
+<textarea id="address" placeholder="العنوان الكامل"></textarea>
+
+<button onclick="sendOrder()">
+
+تأكيد الطلب
+
+</button>
+
+<script>
+
+let cart =
+JSON.parse(localStorage.getItem("cart")) || [];
+
+let total=0;
+
+cart.forEach((item,index)=>{
+
+total+=item.price;
+
+document.getElementById("cart").innerHTML+=`
+
+<div class="item">
+
+<div>
+
+${item.name}<br>
+
+${item.price} دج
+
+</div>
+
+<button onclick="removeItem(${index})">
+
+❌
+
+</button>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("total").innerHTML=
+
+"المجموع : "+total+" دج";
+
+function removeItem(i){
+
+cart.splice(i,1);
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+location.reload();
+
+}
+
+function sendOrder(){
+
+let name=document.getElementById("name").value;
+
+let phone=document.getElementById("phone").value;
+
+let address=document.getElementById("address").value;
+
+if(name==""||phone==""||address==""){
+
+alert("يرجى ملء جميع البيانات");
+
+return;
+
+}
+
+alert("تم إرسال الطلب بنجاح");
+
+localStorage.removeItem("cart");
+
+location.href="index.html";
+
+}
+
+</script>
+
+</body>
+  </html>
