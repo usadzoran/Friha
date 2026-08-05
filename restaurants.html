@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>المطاعم</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Cairo,sans-serif;
+}
+
+body{
+background:#f2f2f2;
+padding:20px;
+}
+
+h1{
+text-align:center;
+margin-bottom:25px;
+color:#e53935;
+}
+
+.restaurant{
+
+background:white;
+
+border-radius:18px;
+
+overflow:hidden;
+
+margin-bottom:25px;
+
+box-shadow:0 6px 20px rgba(0,0,0,.12);
+
+}
+
+.restaurant img{
+
+width:100%;
+
+height:220px;
+
+object-fit:cover;
+
+}
+
+.info{
+
+padding:18px;
+
+}
+
+.info h2{
+
+margin-bottom:10px;
+
+}
+
+button{
+
+width:100%;
+
+padding:15px;
+
+margin-top:15px;
+
+background:#ff9800;
+
+color:white;
+
+border:none;
+
+border-radius:12px;
+
+font-size:18px;
+
+cursor:pointer;
+
+}
+
+.back{
+
+background:#222;
+
+margin-top:30px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1 id="title"></h1>
+
+<div id="restaurants"></div>
+
+<button class="back" onclick="history.back()">
+
+رجوع
+
+</button>
+
+<script>
+
+const params=new URLSearchParams(location.search);
+
+const category=params.get("category");
+
+title.innerHTML=category;
+
+const restaurants=[
+
+{
+
+name:"مطعم البيتزا الإيطالية",
+
+image:"https://images.unsplash.com/photo-1513104890138-7c749659a591?w=900",
+
+category:"🍕 بيتزا"
+
+},
+
+{
+
+name:"Pizza House",
+
+image:"https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=900",
+
+category:"🍕 بيتزا"
+
+},
+
+{
+
+name:"مطعم الخضر الطازجة",
+
+image:"https://images.unsplash.com/photo-1542838132-92c53300491e?w=900",
+
+category:"🥗 خضر"
+
+},
+
+{
+
+name:"جنة الفواكه",
+
+image:"https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=900",
+
+category:"🍎 فواكه"
+
+},
+
+{
+
+name:"عالم العصائر",
+
+image:"https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=900",
+
+category:"🧃 عصائر"
+
+}
+
+];
+
+const container=document.getElementById("restaurants");
+
+restaurants
+
+.filter(r=>r.category===category)
+
+.forEach(r=>{
+
+container.innerHTML+=`
+
+<div class="restaurant">
+
+<img src="${r.image}">
+
+<div class="info">
+
+<h2>${r.name}</h2>
+
+<button onclick="location.href='menu.html?restaurant=${encodeURIComponent(r.name)}'">
+
+عرض القائمة
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+</script>
+
+</body>
+
+  </html>
