@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اشري من دارك</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
+}
+
+body{
+background:#f7f7f7;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.container{
+width:95%;
+max-width:420px;
+background:white;
+padding:25px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+text-align:center;
+}
+
+.logo{
+font-size:40px;
+margin-bottom:20px;
+}
+
+h1{
+font-size:40px;
+color:#e63946;
+margin-bottom:40px;
+font-weight:900;
+}
+
+button{
+width:100%;
+padding:18px;
+margin:15px 0;
+border:none;
+border-radius:15px;
+font-size:22px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.food{
+background:#ff9800;
+color:white;
+}
+
+.drink{
+background:#03a9f4;
+color:white;
+}
+
+button:hover{
+transform:scale(1.03);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">🛒</div>
+
+<h1>اشري من دارك</h1>
+
+<button class="food"
+onclick="location.href='categories.html?type=food'">
+🍔 مأكولات
+</button>
+
+<button class="drink"
+onclick="location.href='categories.html?type=drink'">
+🥤 مشروبات
+</button>
+
+</div>
+
+</body>
+</html>
